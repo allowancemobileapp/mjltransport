@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { format } from "date-fns";
-import { CalendarIcon, User, MapPin, Home, Briefcase, Car } from "lucide-react";
+import { CalendarIcon, User, MapPin, Home, Briefcase, Car, Phone } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -48,6 +48,7 @@ const locationOptions = ["Lagos", "PH City", "Abuja"] as const;
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: "Full name must be at least 2 characters." }),
+  phoneNumber: z.string().min(10, { message: "Please enter a valid phone number." }),
   location: z.enum(locationOptions, {
     required_error: "Please select a location.",
   }),
@@ -71,6 +72,7 @@ export function BookingForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullName: "",
+      phoneNumber: "",
       address: "",
       luggageCount: 0,
     },
@@ -82,8 +84,9 @@ export function BookingForm() {
 New Ride Booking for MJLTRANSPORT:
 ---------------------------------
 *Full Name:* ${values.fullName}
+*Phone Number:* ${values.phoneNumber}
 *Location:* ${values.location}
-*Pickup Address:* ${values.address}
+*Drop off Address:* ${values.address}
 *Hostel:* ${values.hostel}
 *Number of Luggages:* ${values.luggageCount}
 *Preferred Vehicle:* ${values.vehicle}
@@ -106,19 +109,34 @@ New Ride Booking for MJLTRANSPORT:
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="fullName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="flex items-center"><User className="mr-2 h-4 w-4 text-primary/80" />Full Name</FormLabel>
-              <FormControl>
-                <Input placeholder="e.g., John Doe" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="fullName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center"><User className="mr-2 h-4 w-4 text-primary/80" />Full Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g., John Doe" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phoneNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center"><Phone className="mr-2 h-4 w-4 text-primary/80" />Phone Number</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g., 08012345678" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
@@ -171,9 +189,9 @@ New Ride Booking for MJLTRANSPORT:
           name="address"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="flex items-center"><MapPin className="mr-2 h-4 w-4 text-primary/80" />Pickup Address</FormLabel>
+              <FormLabel className="flex items-center"><MapPin className="mr-2 h-4 w-4 text-primary/80" />Drop off Address</FormLabel>
               <FormControl>
-                <Textarea placeholder="Your full pickup address" {...field} />
+                <Textarea placeholder="Your full drop off address" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
