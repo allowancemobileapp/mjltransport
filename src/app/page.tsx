@@ -3,12 +3,16 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
+import { ModeToggle } from '@/components/theme-toggle';
 
 export default function Home() {
   const flierImage = PlaceHolderImages.find((img) => img.id === 'mjl-flier');
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-background p-4 sm:p-8">
+       <div className="absolute top-4 right-4">
+        <ModeToggle />
+      </div>
       <div className="w-full max-w-lg text-center">
         <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl font-headline mb-8">
           MJLTRANSPORT
