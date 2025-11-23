@@ -40,8 +40,8 @@ const hostelOptions = [
 ] as const;
 
 const vehicleOptions = [
-  "8-seater A/C Bus @ N60k",
-  "5-seater A/C Sienna @ N70k"
+  "8-seater A/C Bus",
+  "5-seater A/C Sienna"
 ] as const;
 
 const locationOptions = ["Lagos", "PH City", "Abuja"] as const;
