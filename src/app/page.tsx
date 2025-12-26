@@ -15,6 +15,15 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { Car, School } from 'lucide-react';
 
 export default function Home() {
   const flierImages = PlaceHolderImages.filter((img) => img.id.startsWith('mjl-flier'));
@@ -59,15 +68,45 @@ export default function Home() {
             <CarouselPrevious className="left-2" />
             <CarouselNext className="right-2" />
           </Carousel>
-          <Link href="/book" passHref>
-            <Button
-              size="lg"
-              className="mt-10 w-full max-w-sm text-lg font-semibold bg-accent text-accent-foreground hover:bg-accent/90 transform hover:scale-105 transition-transform duration-200"
-              aria-label="Book a Ride now"
-            >
-              Book a Ride
-            </Button>
-          </Link>
+          
+          <Sheet>
+            <SheetTrigger asChild>
+               <Button
+                size="lg"
+                className="mt-10 w-full max-w-sm text-lg font-semibold bg-accent text-accent-foreground hover:bg-accent/90 transform hover:scale-105 transition-transform duration-200"
+                aria-label="Book a Ride now"
+              >
+                Book a Ride
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="bottom" className="w-full rounded-t-lg">
+              <SheetHeader className="text-center">
+                <SheetTitle>Choose Your Destination</SheetTitle>
+                <SheetDescription>
+                  Where are you heading? Select an option below to proceed.
+                </SheetDescription>
+              </SheetHeader>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-8">
+                <Link href="/book" passHref legacyBehavior>
+                  <a className="block">
+                    <Button variant="outline" className="w-full h-24 flex-col gap-2 text-lg">
+                       <Car className="h-8 w-8" />
+                      Book a Ride Home
+                    </Button>
+                  </a>
+                </Link>
+                 <Link href="/book-to-school" passHref legacyBehavior>
+                  <a className="block">
+                    <Button variant="outline" className="w-full h-24 flex-col gap-2 text-lg">
+                       <School className="h-8 w-8" />
+                      Book a Ride to School
+                    </Button>
+                  </a>
+                </Link>
+              </div>
+            </SheetContent>
+          </Sheet>
+
         </div>
       </main>
     </div>
