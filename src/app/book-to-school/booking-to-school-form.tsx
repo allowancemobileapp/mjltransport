@@ -231,7 +231,7 @@ New 'To School' Ride Booking for MJLTRANSPORT:
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a vehicle" />
-                  </Trigger>
+                  </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   {vehicleOptions.map(option => (
