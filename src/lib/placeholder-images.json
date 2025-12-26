@@ -5,6 +5,12 @@
       "description": "MJL Transport business flier",
       "imageUrl": "https://crwwlgwjdclhvwqwspoa.supabase.co/storage/v1/object/public/mjlt/Minimalist%20Square%20Photo%20Instagram%20Post%20(1).png",
       "imageHint": "transport flyer"
+    },
+    {
+      "id": "mjl-flier-2",
+      "description": "MJL Transport business flier 2",
+      "imageUrl": "https://crwwlgwjdclhvwqwspoa.supabase.co/storage/v1/object/public/mjlt/Minimalist%20Square%20Photo%20Instagram%20Post%20(2).png",
+      "imageHint": "transport flyer promo"
     }
   ]
 }
