@@ -1,3 +1,6 @@
+"use client";
+
+import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -11,9 +14,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
   const flierImages = PlaceHolderImages.filter((img) => img.id.startsWith('mjl-flier'));
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
 
   return (
     <div className="relative min-h-screen bg-background">
@@ -23,7 +30,13 @@ export default function Home() {
       </header>
       <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8">
         <div className="w-full max-w-lg text-center">
-          <Carousel className="w-full" opts={{ loop: true }}>
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full"
+            opts={{ loop: true }}
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+          >
             <CarouselContent>
               {flierImages.map((flierImage) => (
                 <CarouselItem key={flierImage.id}>
