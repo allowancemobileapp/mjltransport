@@ -23,7 +23,16 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { Car, School } from 'lucide-react';
+import { Car, School, Info } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 export default function Home() {
   const flierImages = PlaceHolderImages.filter((img) => img.id.startsWith('mjl-flier'));
@@ -35,7 +44,40 @@ export default function Home() {
     <div className="relative min-h-screen bg-background">
       <header className="absolute top-0 left-0 right-0 p-4 sm:p-6 flex justify-between items-center z-10">
         <h1 className="text-2xl font-bold text-primary sm:text-3xl">MJLT</h1>
-        <ModeToggle />
+        <div className="flex items-center gap-2">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Info className="h-[1.2rem] w-[1.2rem]" />
+                <span className="sr-only">About MJL Transport</span>
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Why Choose MJL Transport?</DialogTitle>
+                <DialogDescription>
+                  Your stress-free travel solution.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="text-sm text-muted-foreground space-y-4 py-4">
+                <p>
+                  Vacations and Resumption in ABUAD can be very stressful. Getting your bags from your hostel to the school gate is 20% of the stress. Getting your bags from the school's gate into your vehicle is another 20% of the stress, not to even talk of getting to the park. Before you reach your house, you're already half dead.
+                </p>
+                <p>
+                  With MJL Transport, all these stresses are considered and tackled from your hostel to your house. Our private vehicles pick you and your luggages from your hostel to the school gate, to the bus/sienna and off to Lagos. Depending on your choice of payment, we can drop you at our park or right at your home doorstep.
+                </p>
+                <p>
+                  To add to the convenience, all our vehicles come with guaranteed A/C with food and drinks refreshments to give you the best comfort on your way home.
+                </p>
+                <p className="font-semibold text-foreground">
+                  Join us and the already 30 students riding with us since 2024 and book a luxury ride today.
+                </p>
+              </div>
+            </DialogContent>
+          </Dialog>
+
+          <ModeToggle />
+        </div>
       </header>
       <main className="flex min-h-screen flex-col items-center justify-center p-4 sm:p-8">
         <div className="w-full max-w-lg text-center">
