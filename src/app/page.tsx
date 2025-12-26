@@ -87,21 +87,17 @@ export default function Home() {
                 </SheetDescription>
               </SheetHeader>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-8">
-                <Link href="/book" passHref legacyBehavior>
-                  <a className="block">
-                    <Button variant="outline" className="w-full h-24 flex-col gap-2 text-lg">
-                       <Car className="h-8 w-8" />
-                      Book a Ride Home
-                    </Button>
-                  </a>
+                <Link href="/book" passHref>
+                  <Button variant="outline" className="w-full h-24 flex-col gap-2 text-lg">
+                      <Car className="h-8 w-8" />
+                    Book a Ride Home
+                  </Button>
                 </Link>
-                 <Link href="/book-to-school" passHref legacyBehavior>
-                  <a className="block">
-                    <Button variant="outline" className="w-full h-24 flex-col gap-2 text-lg">
-                       <School className="h-8 w-8" />
-                      Book a Ride to School
-                    </Button>
-                  </a>
+                <Link href="/book-to-school" passHref>
+                  <Button variant="outline" className="w-full h-24 flex-col gap-2 text-lg">
+                      <School className="h-8 w-8" />
+                    Book a Ride to School
+                  </Button>
                 </Link>
               </div>
             </SheetContent>
